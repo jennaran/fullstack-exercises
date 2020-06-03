@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 
 const Header = props => <h1>{props.text}</h1>
 
-
 const Button = (props) => (
   <button onClick={props.handleClick}>
     {props.text}
@@ -67,7 +66,6 @@ const App = () => {
       <Button handleClick = {() => setToNeutral()} text = "Neutral" />
       <Button handleClick = {() => setToBad()} text = "Bad" />
       <Header text = "Statistics" />
-
 
       <Statistics 
         good = "Good:" 
