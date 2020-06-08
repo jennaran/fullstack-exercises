@@ -19,6 +19,8 @@
 
 [Kurssitiedot2/src](https://github.com/jennaran/fullstack2020/tree/master/osa2/kurssitiedot2/src)
 
+[Puhelinluettelo](https://github.com/jennaran/fullstack2020/tree/master/osa2/puhelinluettelo)
+
 ## Osa3
 ## Osa4
 ## Osa5
