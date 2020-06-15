@@ -13,10 +13,10 @@ const Weather = ({country}) => {
 
     return (
         <div>
-        <p>temperature: {weather.temperature} Celsius</p>
-        <p>{weather.weather_icons ? weather.weather_icons.map((imgUrl, key) => <img key={key} src={imgUrl} alt="Weather icon" />) : null} </p>
-        <p>wind: {weather.wind_speed} mph direction {weather.wind_dir}</p>
-    </div>
+            <p>temperature: {weather.temperature} Celsius</p>
+            <p>{weather.weather_icons ? weather.weather_icons.map((imgUrl, key) => <img key={key} src={imgUrl} alt="Weather icon" />) : null} </p>
+            <p>wind: {weather.wind_speed} mph direction {weather.wind_dir}</p>
+        </div>
     )
 }
 
