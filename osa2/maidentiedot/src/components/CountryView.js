@@ -1,20 +1,20 @@
 import React from 'react'
-import Name from './Name'
+import Weather from './Weather'
 
 const CountryView = ({ country }) => {
     return (
         <div>
             <h2>{country.name}</h2>
-            <p>{country.capital}</p>
-            <p>{country.population}</p>
+            <p>Capital: {country.capital}</p>
+            <p>Population: {country.population}</p>
             <h3>Languages</h3>
-            <div>
-                {country.languages.map((lan, key) => 
-                    <Name key={key} value={lan} />)}
-            </div>
-            <div>
-            <img src={country.flag} alt='The flag'/>
-            </div>
+            <ul>
+                {country.languages.map((language, key) => 
+                    <li key= {key}>{language.name}</li>)}
+            </ul>
+            <img src={country.flag} alt='The flag' width="30%" height="30%"/>
+            <h2>Weather in {country.capital}</h2>
+            <Weather country={ country } />
         </div>
     )
 }
