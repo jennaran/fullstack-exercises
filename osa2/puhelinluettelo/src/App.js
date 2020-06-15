@@ -4,8 +4,6 @@ import PersonForm from './components/PersonForm'
 import Filter from './components/Filter'
 import Person from './components/Person'
 
-
-
 const App = () => {
   const [ persons, setPersons] = useState([]) 
   const [ newName, setNewName ] = useState('')
@@ -23,7 +21,12 @@ const App = () => {
   const addPerson = (event) => {
       event.preventDefault()
       if (persons.map(person => person.name).includes(newName)) {
-          window.alert(`${newName} is already added to phonebook`)
+          if (window.confirm(`${newName} is already added to phonebook, replace the old number with a new one?`)) {
+            const samePerson = persons.filter(p => p.name === newName)
+            toggleNumberOf(samePerson[0].id)
+            setNewNumber('')
+            setNewName('')
+          }
       } else {
       const personObject = {
           name: newName,
@@ -40,7 +43,22 @@ const App = () => {
       }
     }
 
-  
+  const toggleNumberOf = id => {
+    const person = persons.find(person => person.id === id)
+    const changedNumber = { ...person, number: newNumber}
+
+    numberService
+      .update(id, changedNumber)
+      .then(returnedPerson => {
+        setPersons(persons.map(person => person.id !== id ? person : returnedPerson))
+      })
+      .catch(error => {
+        alert(
+          `the person ${person.name} was already deleted from server`
+        )
+        setPersons(persons.filter(p => p.id !== id))
+      })
+  } 
 
   const handleNameChange = (event) => {
       console.log('name:',event.target.value)
@@ -69,15 +87,6 @@ const App = () => {
         setPersons(persons.filter(person => person.id !== id))
       })
     }
-  }
-
-  const toggleNumberOf = id => {
-    const person = persons.find(person => person.id === id)
-    const changedNote = { ...person, number}
-
-
-
-    
   }
 
   const numbersToShow = persons.filter(person =>
