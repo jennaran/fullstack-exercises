@@ -123,8 +123,10 @@ const App = () => {
     }
   }
 
-  const numbersToShow = persons.filter(person =>
-    person.name.toLocaleLowerCase().includes(filter.toLocaleLowerCase()))
+  const numbersToShow = filter.length === 0 ?
+    persons :
+    persons.filter(person =>
+    person.name.toLowerCase().includes(filter.toLowerCase()))
   
   return (
     <div>
