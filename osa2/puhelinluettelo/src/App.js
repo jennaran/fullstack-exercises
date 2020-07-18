@@ -42,14 +42,23 @@ const App = () => {
           setPersons(persons.concat(returnedPerson))
           setNewName('')
           setNewNumber('')
+
+          setMessage(
+            `Added ${newName}`
+            )
+            setMessageType("message")
+            setTimeout(() => {
+              setMessage(null)
+            }, 3000);
+        }).catch(error => {
+          setMessage(
+            error.response.data.error
+            )
+            setMessageType("error")
+            setTimeout(() => {
+              setMessage(null)
+            }, 3000);
         })
-        setMessage(
-        `Added ${newName}`
-        )
-        setMessageType("message")
-        setTimeout(() => {
-          setMessage(null)
-        }, 3000);
       }
     }
 
