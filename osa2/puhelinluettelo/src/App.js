@@ -80,13 +80,13 @@ const App = () => {
       })
       .catch(error => {
         setMessage(
-          `${person.name} was already deleted from server`
+          `${person.name} was already deleted from server or number is in incorrect form`
         )
         setMessageType("error")
         setTimeout(() => {
           setMessage(null)
         }, 3000);
-        setPersons(persons.filter(person => person.id !== id))
+//        setPersons(persons.filter(person => person.id !== id))
       })
   } 
 
