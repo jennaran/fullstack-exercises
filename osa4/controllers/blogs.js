@@ -4,11 +4,11 @@ const Blog = require('../models/blog')
 
 blogsRouter.get('/', async (request, response) => {
   const blogs = await Blog.find({})
-  response.json(blogs.map(note => note.toJSON()))
+  response.json(blogs.map(blog => blog.toJSON()))
 })
 
 
-blogsRouter.post('/', async (request, response, next) => {
+blogsRouter.post('/', async (request, response) => {
   //postattu blog
   const body = request.body
 
@@ -19,16 +19,13 @@ blogsRouter.post('/', async (request, response, next) => {
     likes: body.likes
     // === undefined ? 0 : body.likes
   })
-  try {
-    const savedBlog = await blog.save()
-    response.json(savedBlog.toJSON())
-  } catch(exception) {
-    next(exception)
-  }
+  const savedBlog = await blog.save()
+  response.json(savedBlog.toJSON())
+
 })
 
 
-blogsRouter.put('/:id', async (request, response, next) => {
+blogsRouter.put('/:id', async (request, response) => {
   const body = request.body
   const blog = {
     title: body.title,
@@ -36,12 +33,9 @@ blogsRouter.put('/:id', async (request, response, next) => {
     url: body.url,
     likes: body.likes
   }
-  try {
-    const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, blog, { new: true })
-    response.json(updatedBlog.toJSON())
-  } catch(exception) {
-    next(exception)
-  }
+  const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, blog, { new: true })
+  response.json(updatedBlog.toJSON())
+
 })
 
 blogsRouter.delete('/:id', async (request, response) => {
