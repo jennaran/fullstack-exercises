@@ -1,5 +1,6 @@
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Impvam9qbyIsImlkIjoiNWY5OThkNzViMTM4Mjc0MWNmZWEzOGQ3IiwiaWF0IjoxNjA0NjgxMDYyfQ.JJ9NAce1oVezTmUgEDGg5YdkA_kASDNvaS5XuZso-Kk
 
 {
     "title": "uusi",
